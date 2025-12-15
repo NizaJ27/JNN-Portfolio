@@ -1,0 +1,43 @@
+<footer class="bg-gray-900 text-white py-12 mt-auto">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="{{ url_for('main.index') }}" class="text-gray-400 hover:text-blue-400 transition">Home</a></li>
+                    <li><a href="{{ url_for('business.index') }}" class="text-gray-400 hover:text-blue-400 transition">Business</a></li>
+                    <li><a href="{{ url_for('developer.index') }}" class="text-gray-400 hover:text-blue-400 transition">Development</a></li>
+                    <li><a href="{{ url_for('projects.index') }}" class="text-gray-400 hover:text-blue-400 transition">Projects</a></li>
+                </ul>
+            </div>
+            
+            <!-- Social Links -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                <div class="flex space-x-4">
+                    <a href="https://github.com/NizaJ27" target="_blank" rel="noopener noreferrer"
+                       class="text-gray-400 hover:text-blue-400 transition">
+                        GitHub
+                    </a>
+                    <a href="https://linkedin.com/in/joshuanizamudin" target="_blank" rel="noopener noreferrer"
+                       class="text-gray-400 hover:text-blue-400 transition">
+                        LinkedIn
+                    </a>
+                    <a href="mailto:jnizamudin@gmail.com" 
+                       class="text-gray-400 hover:text-blue-400 transition">
+                        Email
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div>
+                <p class="text-gray-400">
+                    © 2025 Joshua Nizamudin<br>
+                    <span class="text-sm">Built with Flask + Python</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>

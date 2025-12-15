@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  web:
+    image: ${DOCKER_IMAGE:-nizaj27/jnn-portfolio}:latest
+    restart: unless-stopped
+    environment:
+      - FLASK_ENV=${FLASK_ENV:-production}
+      - SECRET_KEY=${SECRET_KEY}
+    ports:
+      - "5000:5000"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:5000', timeout=2)"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s

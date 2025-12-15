@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="bg-gradient-to-r from-green-600 to-teal-600 text-white py-20">
+    <div class="container mx-auto px-4">
+        <h1 class="text-5xl font-bold mb-4">Project Portfolio</h1>
+        <p class="text-xl text-green-100">Showcasing my work across business and development</p>
+    </div>
+</div>
+
+<div class="container mx-auto px-4 py-16">
+    <!-- Filter Tabs -->
+    <section class="mb-12">
+        <div class="flex flex-wrap justify-center gap-4" x-data="{ active: '{{ active_category }}' }">
+            {% for category in categories %}
+            <a href="{{ url_for('projects.index', category=category.lower() if category != 'All' else 'all') }}"
+               class="px-6 py-3 rounded-lg font-semibold transition"
+               :class="active === '{{ category.lower() if category != 'All' else 'all' }}' ? 'bg-green-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'">
+                {{ category }}
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    {% set featured = projects | selectattr('featured', 'equalto', true) | list %}
+    {% if featured %}
+    <section class="mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">Featured Projects</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {% for project in featured %}
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition transform hover:-translate-y-1">
+                <div class="h-48 bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center">
+                    <span class="text-6xl">🚀</span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="px-3 py-1 bg-green-100 text-green-800 text-sm font-semibold rounded-full">
+                            {{ project.category }}
+                        </span>
+                        <span class="text-yellow-500 text-2xl" title="Featured">⭐</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">{{ project.title }}</h3>
+                    <p class="text-gray-700 mb-4 leading-relaxed">{{ project.description }}</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        {% for tag in project.tags %}
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">
+                            {{ tag }}
+                        </span>
+                        {% endfor %}
+                    </div>
+                    <div class="flex gap-4">
+                        {% if project.github %}
+                        <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer"
+                           class="flex-1 px-4 py-2 bg-gray-900 text-white rounded-lg text-center font-semibold hover:bg-gray-800 transition">
+                            GitHub
+                        </a>
+                        {% endif %}
+                        {% if project.demo %}
+                        <a href="{{ project.demo }}" target="_blank" rel="noopener noreferrer"
+                           class="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg text-center font-semibold hover:bg-green-700 transition">
+                            Live Demo
+                        </a>
+                        {% endif %}
+                        <a href="{{ url_for('projects.detail', project_id=project.id) }}"
+                           class="flex-1 px-4 py-2 border-2 border-green-600 text-green-600 rounded-lg text-center font-semibold hover:bg-green-50 transition">
+                            Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- All Projects -->
+    {% set regular = projects | rejectattr('featured', 'equalto', true) | list %}
+    {% if regular %}
+    <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">All Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for project in regular %}
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition transform hover:-translate-y-1">
+                <div class="h-32 bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center">
+                    <span class="text-4xl">📁</span>
+                </div>
+                <div class="p-6">
+                    <span class="px-3 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full">
+                        {{ project.category }}
+                    </span>
+                    <h3 class="text-xl font-bold text-gray-900 mt-3 mb-2">{{ project.title }}</h3>
+                    <p class="text-gray-600 text-sm mb-4">{{ project.description[:100] }}...</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        {% for tag in project.tags[:3] %}
+                        <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
+                            {{ tag }}
+                        </span>
+                        {% endfor %}
+                    </div>
+                    <a href="{{ url_for('projects.detail', project_id=project.id) }}"
+                       class="block w-full px-4 py-2 bg-green-600 text-white rounded-lg text-center font-semibold hover:bg-green-700 transition">
+                        View Details
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    {% if not projects %}
+    <div class="text-center py-16">
+        <p class="text-xl text-gray-600">No projects found in this category.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

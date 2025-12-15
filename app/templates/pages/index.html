@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-16">
+    <!-- Hero Section -->
+    <section class="text-center mb-16">
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+            Hi, I'm <span class="text-blue-600">Joshua Nizamudin</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            Business Strategist & Web Developer
+        </p>
+        <p class="text-lg text-gray-500 mb-8 max-w-2xl mx-auto">
+            Bridging the gap between business strategy and technical execution to create meaningful solutions.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{{ url_for('projects.index') }}" class="px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition">
+                View My Work
+            </a>
+            <a href="{{ url_for('contact.index') }}" class="px-8 py-3 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition">
+                Get In Touch
+            </a>
+        </div>
+    </section>
+
+    <!-- About Preview -->
+    <section class="max-w-4xl mx-auto mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">About Me</h2>
+        <div class="bg-white rounded-lg shadow-md p-8">
+            <p class="text-gray-700 leading-relaxed mb-4">
+                I'm a business analyst and web developer who bridges the gap between strategic thinking 
+                and technical execution. Currently pursuing my degree at NJIT, I've discovered that the 
+                best solutions come from understanding both the business problem and the technical possibilities.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+                Whether it's building a therapy app with AI integration or optimizing business processes 
+                through automation, I focus on delivering measurable results that matter to users and 
+                stakeholders alike.
+            </p>
+        </div>
+    </section>
+
+    <!-- Navigation Hub -->
+    <section class="mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Explore My Work</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Business Card -->
+            <a href="{{ url_for('business.index') }}" class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition transform hover:-translate-y-1">
+                <div class="text-4xl mb-4">💼</div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Business Professional</h3>
+                <p class="text-gray-600">
+                    Resume, business projects, and strategic work
+                </p>
+            </a>
+
+            <!-- Developer Card -->
+            <a href="{{ url_for('developer.index') }}" class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition transform hover:-translate-y-1">
+                <div class="text-4xl mb-4">💻</div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Web Developer</h3>
+                <p class="text-gray-600">
+                    Technical projects and code demonstrations
+                </p>
+            </a>
+
+            <!-- Projects Card -->
+            <a href="{{ url_for('projects.index') }}" class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition transform hover:-translate-y-1">
+                <div class="text-4xl mb-4">📊</div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Project Portfolio</h3>
+                <p class="text-gray-600">
+                    Complete showcase of all my work
+                </p>
+            </a>
+
+            <!-- Contact Card -->
+            <a href="{{ url_for('contact.index') }}" class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition transform hover:-translate-y-1">
+                <div class="text-4xl mb-4">📬</div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Let's Connect</h3>
+                <p class="text-gray-600">
+                    Get in touch for opportunities
+                </p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="bg-blue-600 text-white rounded-lg p-8 mb-16">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div>
+                <div class="text-4xl font-bold mb-2">15+</div>
+                <div class="text-blue-100">Projects</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold mb-2">10+</div>
+                <div class="text-blue-100">Technologies</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold mb-2">100%</div>
+                <div class="text-blue-100">Test Coverage</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold mb-2">3+</div>
+                <div class="text-blue-100">Years Learning</div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

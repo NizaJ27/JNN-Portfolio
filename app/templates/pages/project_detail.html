@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="bg-gradient-to-r from-teal-600 to-green-600 text-white py-20">
+    <div class="container mx-auto px-4">
+        <h1 class="text-5xl font-bold mb-4">{{ project.title }}</h1>
+        <p class="text-xl text-teal-100">{{ project.category }} Project</p>
+    </div>
+</div>
+
+<div class="container mx-auto px-4 py-16">
+    <div class="max-w-4xl mx-auto">
+        <!-- Back Button -->
+        <div class="mb-8">
+            <a href="{{ url_for('projects.index') }}" 
+               class="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                </svg>
+                Back to Projects
+            </a>
+        </div>
+
+        <!-- Project Header -->
+        <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+            <div class="flex flex-wrap gap-2 mb-4">
+                {% for tag in project.tags %}
+                <span class="px-3 py-1 bg-green-100 text-green-800 text-sm font-semibold rounded-full">
+                    {{ tag }}
+                </span>
+                {% endfor %}
+            </div>
+            
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ project.title }}</h2>
+            <p class="text-xl text-gray-700 leading-relaxed mb-6">
+                {{ project.description }}
+            </p>
+
+            <div class="flex gap-4">
+                <a href="#" class="px-6 py-3 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition">
+                    View on GitHub
+                </a>
+                <a href="#" class="px-6 py-3 border-2 border-green-600 text-green-600 rounded-lg font-semibold hover:bg-green-50 transition">
+                    Live Demo
+                </a>
+            </div>
+        </div>
+
+        <!-- Project Image -->
+        <div class="bg-white rounded-lg shadow-md p-4 mb-8">
+            <div class="h-96 bg-gradient-to-br from-teal-400 to-green-500 rounded-lg flex items-center justify-center">
+                <span class="text-8xl">🚀</span>
+            </div>
+        </div>
+
+        <!-- Project Details -->
+        <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">Project Overview</h3>
+            
+            <div class="space-y-6">
+                <div>
+                    <h4 class="text-lg font-semibold text-gray-900 mb-2">Problem Statement</h4>
+                    <p class="text-gray-700 leading-relaxed">
+                        This project addresses the need for [describe the problem or need this project solves].
+                        Through careful analysis and planning, we developed a solution that meets user needs
+                        while maintaining code quality and performance.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold text-gray-900 mb-2">Key Features</h4>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+                        <li>Feature 1: Comprehensive functionality with intuitive interface</li>
+                        <li>Feature 2: Robust error handling and validation</li>
+                        <li>Feature 3: Responsive design for all devices</li>
+                        <li>Feature 4: Comprehensive test coverage</li>
+                        <li>Feature 5: Clean, maintainable codebase</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold text-gray-900 mb-2">Technical Implementation</h4>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        Built using modern web development practices and following TDD methodology.
+                        The application architecture emphasizes separation of concerns, scalability,
+                        and maintainability.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h5 class="font-semibold text-gray-900 mb-2">Frontend</h5>
+                            <p class="text-gray-700 text-sm">HTML5, CSS3, Tailwind CSS, Alpine.js</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h5 class="font-semibold text-gray-900 mb-2">Backend</h5>
+                            <p class="text-gray-700 text-sm">Python, Flask, Jinja2 Templates</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h5 class="font-semibold text-gray-900 mb-2">Testing</h5>
+                            <p class="text-gray-700 text-sm">pytest, pytest-cov, pytest-flask</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h5 class="font-semibold text-gray-900 mb-2">Tools</h5>
+                            <p class="text-gray-700 text-sm">Git, GitHub, VS Code, Pylint</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold text-gray-900 mb-2">Challenges & Solutions</h4>
+                    <p class="text-gray-700 leading-relaxed">
+                        During development, we encountered several technical challenges including
+                        performance optimization, cross-browser compatibility, and test coverage.
+                        Each challenge was addressed through careful research, iterative testing,
+                        and adherence to best practices.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold text-gray-900 mb-2">Results & Impact</h4>
+                    <p class="text-gray-700 leading-relaxed">
+                        The project successfully delivers on its goals with measurable outcomes.
+                        Key metrics include high test coverage, positive user feedback, and
+                        maintainable, scalable architecture ready for future enhancements.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Projects -->
+        <div class="bg-white rounded-lg shadow-md p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">Related Projects</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <a href="{{ url_for('projects.index') }}" 
+                   class="border-2 border-gray-200 rounded-lg p-6 hover:border-green-600 hover:shadow-lg transition">
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">View All Projects</h4>
+                    <p class="text-gray-600">Explore more of my work</p>
+                </a>
+                <a href="{{ url_for('contact.index') }}" 
+                   class="border-2 border-gray-200 rounded-lg p-6 hover:border-green-600 hover:shadow-lg transition">
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Get In Touch</h4>
+                    <p class="text-gray-600">Discuss your project needs</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
