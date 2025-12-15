@@ -22,18 +22,18 @@ def index():
             'category': 'Full Stack',
             'image': '/static/images/projects/therapy-app.jpg',
             'github': 'https://github.com/NizaJ27/IS218-AI-Demo',
-            'demo': None,
+            'demo': 'https://tapp.theratoast.com',
             'featured': True
         },
         {
             'id': 'module14',
-            'title': 'Module 14 Project',
-            'description': 'Advanced web application demonstrating modern development practices',
-            'tags': ['Python', 'Flask', 'Testing', 'CI/CD'],
+            'title': 'FastAPI Calculator with JWT Auth',
+            'description': 'Advanced web application with JWT authentication, PostgreSQL database, and calculation BREAD operations',
+            'tags': ['Python', 'FastAPI', 'PostgreSQL', 'JWT', 'CI/CD'],
             'category': 'Backend',
             'image': '/static/images/projects/module14.jpg',
-            'github': 'https://github.com/NizaJ27/Module14',
-            'demo': None,
+            'github': 'https://github.com/NizaJ27/IS218-Module-14',
+            'demo': 'https://calc.theratoast.com',
             'featured': True
         },
         {
