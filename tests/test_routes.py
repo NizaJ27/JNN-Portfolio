@@ -97,6 +97,36 @@ class TestProjectsRoutes:
         """Test that project detail route works"""
         response = client.get('/projects/therapy-app')
         assert response.status_code == 200
+    
+    def test_project_detail_therapy_app(self, client):
+        """Test therapy app detail page content"""
+        response = client.get('/projects/therapy-app')
+        assert response.status_code == 200
+        assert b'AI Therapy Application' in response.data
+        assert b'OpenAI' in response.data
+        assert b'tapp.theratoast.com' in response.data
+    
+    def test_project_detail_module14(self, client):
+        """Test module14 detail page content"""
+        response = client.get('/projects/module14')
+        assert response.status_code == 200
+        assert b'FastAPI Calculator with JWT Auth' in response.data
+        assert b'PostgreSQL' in response.data
+        assert b'calc.theratoast.com' in response.data
+    
+    def test_project_detail_portfolio(self, client):
+        """Test portfolio detail page content"""
+        response = client.get('/projects/portfolio')
+        assert response.status_code == 200
+        assert b'Personal Portfolio' in response.data
+        assert b'100% test coverage' in response.data
+    
+    def test_project_detail_invalid_id(self, client):
+        """Test that invalid project ID redirects to projects page"""
+        response = client.get('/projects/nonexistent-project')
+        assert response.status_code == 200
+        # Should show projects page
+        assert b'Project Portfolio' in response.data
 
 
 class TestContactRoutes:

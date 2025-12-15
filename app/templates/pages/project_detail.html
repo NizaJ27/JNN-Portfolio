@@ -39,12 +39,18 @@
             </p>
 
             <div class="flex gap-4">
-                <a href="#" class="px-6 py-3 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition">
+                {% if project.github %}
+                <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer"
+                   class="px-6 py-3 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition">
                     View on GitHub
                 </a>
-                <a href="#" class="px-6 py-3 border-2 border-green-600 text-green-600 rounded-lg font-semibold hover:bg-green-50 transition">
+                {% endif %}
+                {% if project.demo %}
+                <a href="{{ project.demo }}" target="_blank" rel="noopener noreferrer"
+                   class="px-6 py-3 border-2 border-green-600 text-green-600 rounded-lg font-semibold hover:bg-green-50 transition">
                     Live Demo
                 </a>
+                {% endif %}
             </div>
         </div>
 
@@ -60,71 +66,62 @@
             <h3 class="text-2xl font-bold text-gray-900 mb-6">Project Overview</h3>
             
             <div class="space-y-6">
+                {% if project.problem_statement %}
                 <div>
                     <h4 class="text-lg font-semibold text-gray-900 mb-2">Problem Statement</h4>
                     <p class="text-gray-700 leading-relaxed">
-                        This project addresses the need for [describe the problem or need this project solves].
-                        Through careful analysis and planning, we developed a solution that meets user needs
-                        while maintaining code quality and performance.
+                        {{ project.problem_statement }}
                     </p>
                 </div>
+                {% endif %}
 
+                {% if project.features %}
                 <div>
                     <h4 class="text-lg font-semibold text-gray-900 mb-2">Key Features</h4>
                     <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
-                        <li>Feature 1: Comprehensive functionality with intuitive interface</li>
-                        <li>Feature 2: Robust error handling and validation</li>
-                        <li>Feature 3: Responsive design for all devices</li>
-                        <li>Feature 4: Comprehensive test coverage</li>
-                        <li>Feature 5: Clean, maintainable codebase</li>
+                        {% for feature in project.features %}
+                        <li>{{ feature }}</li>
+                        {% endfor %}
                     </ul>
                 </div>
+                {% endif %}
 
+                {% if project.technical_implementation %}
                 <div>
                     <h4 class="text-lg font-semibold text-gray-900 mb-2">Technical Implementation</h4>
                     <p class="text-gray-700 leading-relaxed mb-4">
-                        Built using modern web development practices and following TDD methodology.
-                        The application architecture emphasizes separation of concerns, scalability,
-                        and maintainability.
+                        {{ project.technical_implementation }}
                     </p>
+                    {% if project.technologies %}
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {% for category, tech in project.technologies.items() %}
                         <div class="bg-gray-50 rounded-lg p-4">
-                            <h5 class="font-semibold text-gray-900 mb-2">Frontend</h5>
-                            <p class="text-gray-700 text-sm">HTML5, CSS3, Tailwind CSS, Alpine.js</p>
+                            <h5 class="font-semibold text-gray-900 mb-2">{{ category }}</h5>
+                            <p class="text-gray-700 text-sm">{{ tech }}</p>
                         </div>
-                        <div class="bg-gray-50 rounded-lg p-4">
-                            <h5 class="font-semibold text-gray-900 mb-2">Backend</h5>
-                            <p class="text-gray-700 text-sm">Python, Flask, Jinja2 Templates</p>
-                        </div>
-                        <div class="bg-gray-50 rounded-lg p-4">
-                            <h5 class="font-semibold text-gray-900 mb-2">Testing</h5>
-                            <p class="text-gray-700 text-sm">pytest, pytest-cov, pytest-flask</p>
-                        </div>
-                        <div class="bg-gray-50 rounded-lg p-4">
-                            <h5 class="font-semibold text-gray-900 mb-2">Tools</h5>
-                            <p class="text-gray-700 text-sm">Git, GitHub, VS Code, Pylint</p>
-                        </div>
+                        {% endfor %}
                     </div>
+                    {% endif %}
                 </div>
+                {% endif %}
 
+                {% if project.challenges %}
                 <div>
                     <h4 class="text-lg font-semibold text-gray-900 mb-2">Challenges & Solutions</h4>
                     <p class="text-gray-700 leading-relaxed">
-                        During development, we encountered several technical challenges including
-                        performance optimization, cross-browser compatibility, and test coverage.
-                        Each challenge was addressed through careful research, iterative testing,
-                        and adherence to best practices.
+                        {{ project.challenges }}
                     </p>
                 </div>
+                {% endif %}
 
+                {% if project.results %}
                 <div>
                     <h4 class="text-lg font-semibold text-gray-900 mb-2">Results & Impact</h4>
                     <p class="text-gray-700 leading-relaxed">
-                        The project successfully delivers on its goals with measurable outcomes.
-                        Key metrics include high test coverage, positive user feedback, and
-                        maintainable, scalable architecture ready for future enhancements.
+                        {{ project.results }}
                     </p>
                 </div>
+                {% endif %}
             </div>
         </div>
 
