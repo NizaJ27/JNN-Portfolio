@@ -71,7 +71,7 @@ class TestProjectsRoutes:
         response = client.get('/projects/')
         assert b'Project Portfolio' in response.data
         assert b'AI Therapy Application' in response.data
-        assert b'Module 14' in response.data
+        assert b'FastAPI Calculator' in response.data
     
     def test_projects_filter_all(self, client):
         """Test projects filter with 'all' category"""
@@ -83,8 +83,8 @@ class TestProjectsRoutes:
         """Test projects filter with 'Backend' category"""
         response = client.get('/projects/?category=Backend')
         assert response.status_code == 200
-        # Should show Module 14 which is Backend
-        assert b'Module 14' in response.data
+        # Should show FastAPI Calculator which is Backend
+        assert b'FastAPI Calculator' in response.data
     
     def test_projects_filter_fullstack(self, client):
         """Test projects filter with 'Full Stack' category"""
