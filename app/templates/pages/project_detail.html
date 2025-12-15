@@ -14,7 +14,7 @@
     <div class="max-w-4xl mx-auto">
         <!-- Back Button -->
         <div class="mb-8">
-            <a href="{{ url_for('projects.index') }}" 
+            <a href="{{ url_for('projects.index') }}"
                class="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
@@ -32,7 +32,7 @@
                 </span>
                 {% endfor %}
             </div>
-            
+
             <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ project.title }}</h2>
             <p class="text-xl text-gray-700 leading-relaxed mb-6">
                 {{ project.description }}
@@ -55,16 +55,22 @@
         </div>
 
         <!-- Project Image -->
+        {% if project.image %}
+        <div class="bg-white rounded-lg shadow-md p-4 mb-8">
+            <img src="{{ project.image }}" alt="{{ project.title }}" class="w-full h-auto rounded-lg">
+        </div>
+        {% else %}
         <div class="bg-white rounded-lg shadow-md p-4 mb-8">
             <div class="h-96 bg-gradient-to-br from-teal-400 to-green-500 rounded-lg flex items-center justify-center">
                 <span class="text-8xl">🚀</span>
             </div>
         </div>
+        {% endif %}
 
         <!-- Project Details -->
         <div class="bg-white rounded-lg shadow-md p-8 mb-8">
             <h3 class="text-2xl font-bold text-gray-900 mb-6">Project Overview</h3>
-            
+
             <div class="space-y-6">
                 {% if project.problem_statement %}
                 <div>
@@ -129,12 +135,12 @@
         <div class="bg-white rounded-lg shadow-md p-8">
             <h3 class="text-2xl font-bold text-gray-900 mb-6">Related Projects</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <a href="{{ url_for('projects.index') }}" 
+                <a href="{{ url_for('projects.index') }}"
                    class="border-2 border-gray-200 rounded-lg p-6 hover:border-green-600 hover:shadow-lg transition">
                     <h4 class="text-lg font-bold text-gray-900 mb-2">View All Projects</h4>
                     <p class="text-gray-600">Explore more of my work</p>
                 </a>
-                <a href="{{ url_for('contact.index') }}" 
+                <a href="{{ url_for('contact.index') }}"
                    class="border-2 border-gray-200 rounded-lg p-6 hover:border-green-600 hover:shadow-lg transition">
                     <h4 class="text-lg font-bold text-gray-900 mb-2">Get In Touch</h4>
                     <p class="text-gray-600">Discuss your project needs</p>

@@ -8,7 +8,7 @@ bp = Blueprint('projects', __name__, url_prefix='/projects')
 def index():
     """
     Projects portfolio page with filtering
-    
+
     Returns:
         Rendered template for projects section
     """
@@ -48,16 +48,16 @@ def index():
             'featured': False
         }
     ]
-    
+
     # Get filter from query params
     category_filter = request.args.get('category', 'all')
-    
+
     # Filter projects if needed
     if category_filter != 'all':
         projects = [p for p in projects if p['category'] == category_filter]
-    
+
     categories = ['All', 'Full Stack', 'Frontend', 'Backend', 'Data Science']
-    
+
     return render_template(
         'pages/projects.html',
         title='Projects | Joshua Nizamudin',
@@ -71,10 +71,10 @@ def index():
 def detail(project_id):
     """
     Individual project detail page
-    
+
     Args:
         project_id: Project identifier
-        
+
     Returns:
         Rendered template for project detail
     """
@@ -88,6 +88,7 @@ def detail(project_id):
             'tags': ['Python', 'Flask', 'OpenAI', 'Healthcare', 'AI', 'REST API'],
             'github': 'https://github.com/NizaJ27/IS218-AI-Demo',
             'demo': 'https://tapp.theratoast.com',
+            'image': '/static/images/Therapy_App.png',
             'problem_statement': 'Mental health support is often inaccessible due to cost, availability, and stigma. Many individuals need immediate support but face barriers in accessing professional help. This project addresses the need for an accessible, private, and immediate mental health support tool.',
             'features': [
                 'AI-powered conversational therapy chatbot using OpenAI GPT-4',
@@ -115,6 +116,7 @@ def detail(project_id):
             'tags': ['Python', 'FastAPI', 'PostgreSQL', 'JWT', 'Docker', 'CI/CD'],
             'github': 'https://github.com/NizaJ27/IS218-Module-14',
             'demo': 'https://calc.theratoast.com',
+            'image': '/static/images/Calulator_App.png',
             'problem_statement': 'Modern web applications require secure user authentication, persistent data storage, and full CRUD operations. This project demonstrates enterprise-grade backend development with FastAPI, implementing secure JWT authentication and comprehensive calculation history management.',
             'features': [
                 'JWT-based authentication with access and refresh tokens',
@@ -168,7 +170,7 @@ def detail(project_id):
             'results': 'Professional portfolio with 100% test coverage successfully deployed at theratoast.com. Automated CI/CD pipeline ensures all tests pass before deployment. Zero-downtime updates via Watchtower. Demonstrates both technical skills and professional presentation.'
         }
     }
-    
+
     # Get project data or return 404
     project = project_data.get(project_id)
     if not project:
@@ -180,7 +182,7 @@ def detail(project_id):
             categories=['All', 'Full Stack', 'Frontend', 'Backend', 'Data Science'],
             active_category='all'
         )
-    
+
     return render_template(
         'pages/project_detail.html',
         title=f'{project["title"]} | Joshua Nizamudin',
